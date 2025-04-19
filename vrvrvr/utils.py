@@ -109,7 +109,7 @@ def plot_top_cities_by_year(df, top_n=10):
         plt.xticks(rotation=45, ha='right')
         plt.grid(axis='y', linestyle='--', alpha=0.7)
         plt.tight_layout()
-        plt.show()
+        plt.savefig(f'данные/Топ-{top_n} городов по вакансиям в {year} году.png')
 
 
 def plot_salaries(df):
@@ -127,7 +127,7 @@ def plot_salaries(df):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    plt.savefig("данные/зарплата_абобы.png")
 
 
 def plot_skills(df, top_n=15):
@@ -147,7 +147,7 @@ def plot_skills(df, top_n=15):
     plt.xlabel('Количество упоминаний')
     plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.show()
+    plt.savefig("данные/навыки_абобы.png")
 
 if __name__ == "__main__":
     keywords = ["Тестировщик", "QA-инженер", "QA-engineer"]
