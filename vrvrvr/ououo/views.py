@@ -5,10 +5,10 @@ def title(request):
     return render(request, 'title.html', {'title':title})
 
 def salary(request):
-    pass
+    return render(request, 'salary.html')
 
 def geography(request):
-    pass
+    return render(request, 'geography.html')
 
 def skills(request):
-    pass
+    return render(request, 'skills.html')
