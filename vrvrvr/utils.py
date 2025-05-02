@@ -1,5 +1,3 @@
-from http.client import responses
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from django.template.context_processors import request
