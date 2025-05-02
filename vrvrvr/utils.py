@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from django.template.context_processors import request
 
-a=pd.read_csv('vacancies_2024.csv')
+a=pd.read_csv('ououo/vacancies_2024.csv')
 b=a[a['name'] == 'Тестировщик']
 c=a[a['name'] == 'QA-инженер']
 d=a[a['name'] == 'QA-engineer']
@@ -42,7 +42,7 @@ def get_currency_rates():
 
 def analyze_vacancies(filename, keywords):
     try:
-        ouo=pd.read_csv('vacancies_2024.csv')
+        ouo=pd.read_csv('ououo/vacancies_2024.csv')
     except Exception as e:
         print(f"ошибка чтения файла: {e}")
         return
@@ -149,4 +149,4 @@ def plot_skills(df, top_n=15):
 
 if __name__ == "__main__":
     keywords = ["Тестировщик", "QA-инженер", "QA-engineer"]
-    analyze_vacancies('vacancies_2024.csv', keywords)
+    analyze_vacancies('ououo/vacancies_2024.csv', keywords)
