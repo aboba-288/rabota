@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from django.template.context_processors import request
 
-a=pd.read_csv('ououo/vacancies_2024.csv')
+a=pd.read_csv('vacancies_2024.csv')
 b=a[a['name'] == 'Тестировщик']
 c=a[a['name'] == 'QA-инженер']
 d=a[a['name'] == 'QA-engineer']
@@ -42,7 +42,7 @@ def get_currency_rates():
 
 def analyze_vacancies(filename, keywords):
     try:
-        ouo=pd.read_csv('ououo/vacancies_2024.csv')
+        ouo=pd.read_csv('vacancies_2024.csv')
     except Exception as e:
         print(f"ошибка чтения файла: {e}")
         return
@@ -99,6 +99,8 @@ def plot_top_cities_by_year(df, top_n=10):
         if len(cities) == 0:
             continue
 
+        cities.to_csv(f'Топ-{top_n} городов по вакансиям в {year} году.csv')
+
         plt.figure(figsize=(12, 6))
         cities.plot(kind='bar', color='lightblue')
         plt.title(f'Топ-{top_n} городов по вакансиям в {year} году', pad=20)
@@ -107,7 +109,7 @@ def plot_top_cities_by_year(df, top_n=10):
         plt.xticks(rotation=45, ha='right')
         plt.grid(axis='y', linestyle='--', alpha=0.7)
         plt.tight_layout()
-        plt.savefig(f'данные/Топ-{top_n} городов по вакансиям в {year} году.png')
+        #plt.savefig(f'данные/Топ-{top_n} городов по вакансиям в {year} году.png')
 
 
 def plot_salaries(df):
@@ -119,13 +121,15 @@ def plot_salaries(df):
     median_by_year = df.groupby('published_at')['salary'].median()
     median_by_year.plot(kind='line', marker='o', label='Медианная зарплата')
 
+    median_by_year.to_csv('salary.csv')
+
     plt.title('Динамика зарплат по годам', pad=20)
     plt.xlabel('Год')
     plt.ylabel('Зарплата (руб)')
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("данные/зарплата_абобы.png")
+    #plt.savefig("данные/зарплата_абобы.png")
 
 
 def plot_skills(df, top_n=15):
@@ -139,14 +143,16 @@ def plot_skills(df, top_n=15):
         .head(top_n)
     )
 
+    skills.to_csv(f'Топ-{top_n} ключевых навыков.csv')
+
     plt.figure(figsize=(12, 8))
     skills.plot(kind='barh')
     plt.title(f'Топ-{top_n} ключевых навыков', pad=20)
     plt.xlabel('Количество упоминаний')
     plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.savefig("данные/навыки_абобы.png")
+    #plt.savefig("данные/навыки_абобы.png")
 
 if __name__ == "__main__":
     keywords = ["Тестировщик", "QA-инженер", "QA-engineer"]
-    analyze_vacancies('ououo/vacancies_2024.csv', keywords)
+    analyze_vacancies('vacancies_2024.csv', keywords)
