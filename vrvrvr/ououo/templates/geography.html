@@ -25,4 +25,19 @@
 <img src="{% static 'images/данные/Топ-10 городов по вакансиям в 2023 году.png' %}">
 <img src="{% static 'images/данные/Топ-10 городов по вакансиям в 2024 году.png' %}">
 
+
+    {% for table in tables %}
+    <div class="card mb-5">
+        <div class="card-header bg-primary text-white">
+            <h2>{{ table.title }}</h2>
+        </div>
+        <div class="card-body table-responsive">
+            {{ table.html_table|safe }}
+        </div>
+        <div class="card-footer text-muted">
+            Данные за {{ table.year }} год
+        </div>
+    </div>
+    {% endfor %}
+
 {% endblock %}
