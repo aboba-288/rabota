@@ -7,12 +7,14 @@ def title(request):
 
 def salary(request):
     df=pd.read_csv("salary.csv")
-    return render(request, 'salary.html',{'df':df})
+    salary=df.to_html(classes='table table-striped',index=False)
+    return render(request, 'salary.html',{'salary':salary})
 
 def geography(request):
-    df = pd.read_csv(".csv")
+#    df = pd.read_csv(".csv")
     return render(request, 'geography.html',{'df':df})
 
 def skills(request):
     df = pd.read_csv("топ-15 ключевых навыков.csv")
-    return render(request, 'skills.html',{'df':df})
+    skills = df.to_html(classes='table table-striped', index=False)
+    return render(request, 'skills.html',{'skills':skills})
