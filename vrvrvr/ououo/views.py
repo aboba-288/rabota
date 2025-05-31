@@ -19,9 +19,8 @@ def geography(request):
     tables_data= []
 
     for filename in os.listdir(file_path):
-        if filename.startswith('топ-10 городов по вакансиям в ') and filename.endswith(' .csv'):
+        if filename.startswith('Топ-10 городов по вакансиям в ') and filename.endswith('.csv'):
             year = filename.split(' в ')[1].split(' году.csv')[0]
-
             filepath= os.path.join(file_path, filename)
             df = pd.read_csv(filepath,encoding='utf-8')
 
